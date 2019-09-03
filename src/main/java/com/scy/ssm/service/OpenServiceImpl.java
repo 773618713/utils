@@ -15,6 +15,23 @@ public class OpenServiceImpl implements OpenService{
 	@Autowired
 	OpenDao openDao;
 	
+	
+	@Override
+	//@Transactional
+	public void addDept2() {
+		Map<String, Object> map = new HashMap<>();
+		map.put("deptno", "11");
+		map.put("dname", "部门11");
+		map.put("loc", "ROOT");
+		map.put("sqlMapId", "addDept");
+		openDao.insert(map);
+		
+		int a = 0;
+		//System.out.println(1/a);
+		
+		addDept();
+	}
+	
 	@Override
 	@Transactional
 	public void addDept() {
@@ -37,13 +54,14 @@ public class OpenServiceImpl implements OpenService{
 	
 
 	@Override
-	public void findDept() {
+	public List<Map<String, Object>> findDept() {
 		Map<String, Object> map = new HashMap<>();
 		map.put("sqlMapId", "findDeptList");
 		List<Map<String, Object>> list = openDao.queryForList(map);
 		for (Map<String, Object> map2 : list) {
 			System.out.println(map2.toString());
 		}
+		return list;
 	}
 
 }

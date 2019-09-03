@@ -30,7 +30,7 @@ public class OpenDao {
 	 */
 	public List<Map<String, Object>> queryForList(Map<String, Object> map) {
 		//PageHelper.startPage(1, 2);
-		List<Map<String, Object>> resultList = sqlSessionTemplate.selectList(map.get("sqlMapId").toString(), map, new RowBounds(0, 2));
+		List<Map<String, Object>> resultList = sqlSessionTemplate.selectList(map.get("sqlMapId").toString(), map, new RowBounds(0, 15));
 		PageInfo pageInfo = new PageInfo<>(resultList, 3);
 		System.out.println(pageInfo.toString());
 		return resultList;
