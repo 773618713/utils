@@ -263,6 +263,12 @@
 		    <artifactId>poi-ooxml</artifactId>
 		    <version>4.1.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.opencv</groupId>
+			<artifactId>opencv</artifactId>
+			<version>4.1.0</version>
+		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.bytedeco.javacpp-presets/opencv -->
 		<!-- <dependency>
@@ -285,5 +291,14 @@
 			</plugin>
 		</plugins>
 		<finalName>utils</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 </project>
