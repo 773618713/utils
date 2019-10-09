@@ -54,7 +54,7 @@ public class ClientSocketUtil {
 		//pw.write("用户名：admin;密码：123");
 		
 		String context = 
-		"POST /utils/json/fun HTTP/1.1\r\n"+
+		"POST /json/funRequest HTTP/1.1\r\n"+
 		"Host: localhost\r\n"+
 		"Connection: keep-alive\r\n"+
 		"Content-Length: 725\r\n"+
