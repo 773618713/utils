@@ -343,16 +343,11 @@
 			<version>2.4</version>
 		</dependency>
 
-
-
-
 		<dependency>
 			<groupId>org.opencv</groupId>
 			<artifactId>opencv</artifactId>
 			<version>4.1.0</version>
 		</dependency>
-
-
 
 		<!-- https://mvnrepository.com/artifact/org.bytedeco.javacpp-presets/opencv -->
 		<!-- <dependency>
