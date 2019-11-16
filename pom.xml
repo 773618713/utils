@@ -375,7 +375,7 @@
 			</plugin>
 		</plugins>
 		<finalName>utils</finalName>
-		<!--<resources>
+		<resources>
 			<resource>
 				<directory>src/main/java</directory>
 				<includes>
@@ -386,6 +386,6 @@
 			<resource>
 				<directory>src/main/resources</directory>
 			</resource>
-		</resources>-->
+		</resources>
 	</build>
 </project>
