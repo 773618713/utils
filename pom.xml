@@ -304,6 +304,12 @@
 			<groupId>batik</groupId>
 			<artifactId>batik-transcoder</artifactId>
 			<version>1.6-1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xercesImpl</artifactId>
+					<groupId>xerces</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 
@@ -346,6 +352,8 @@
 			<version>4.1.0</version>
 		</dependency>
 
+
+
 		<!-- https://mvnrepository.com/artifact/org.bytedeco.javacpp-presets/opencv -->
 		<!-- <dependency>
 		    <groupId>org.bytedeco.javacpp-presets</groupId>
@@ -367,5 +375,17 @@
 			</plugin>
 		</plugins>
 		<finalName>utils</finalName>
+		<!--<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>-->
 	</build>
 </project>
