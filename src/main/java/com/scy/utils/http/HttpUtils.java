@@ -291,6 +291,8 @@ public class HttpUtils {
 		URL url1 = new URL(url);
 		HttpURLConnection conn = (HttpURLConnection) url1.openConnection();
 		conn.setRequestMethod("POST");
+		//模拟浏览器
+		conn.setRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 5.0; Windows NT; DigExt)");
 		conn.setDoOutput(true);
 		conn.setDoInput(true);
 		conn.setUseCaches(false);
