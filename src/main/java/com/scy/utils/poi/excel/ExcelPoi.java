@@ -13,7 +13,7 @@ import java.util.List;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
+//import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -79,7 +79,7 @@ public class ExcelPoi {
 			// 根据上述创建的输入流 创建工作簿对象
 			Workbook wb = WorkbookFactory.create(in);
 			return readSheet(wb, 0);
-		} catch (EncryptedDocumentException | IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;

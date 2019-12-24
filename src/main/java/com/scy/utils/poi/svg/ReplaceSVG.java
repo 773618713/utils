@@ -1,7 +1,8 @@
 package com.scy.utils.poi.svg;
 
 import com.scy.utils.FileUtil;
-import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
+import org.apache.batik.anim.dom.SAXSVGDocumentFactory;
+//import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
 import org.apache.batik.util.XMLResourceDescriptor;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

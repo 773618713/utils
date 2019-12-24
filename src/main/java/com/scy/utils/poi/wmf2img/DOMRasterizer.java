@@ -2,10 +2,11 @@ package com.scy.utils.poi.wmf2img;
 
 import java.io.*;
 
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.transcoder.image.JPEGTranscoder;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+//import org.apache.batik.dom.svg.SVGDOMImplementation;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
