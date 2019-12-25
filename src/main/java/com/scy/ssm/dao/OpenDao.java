@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.github.pagehelper.Page;
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -29,8 +30,11 @@ public class OpenDao {
 	 * @return
 	 */
 	public List<Map<String, Object>> queryForList(Map<String, Object> map) {
-		//PageHelper.startPage(1, 2);
-		List<Map<String, Object>> resultList = sqlSessionTemplate.selectList(map.get("sqlMapId").toString(), map, new RowBounds(0, 15));
+		/*Page page = PageHelper.startPage(2, 3);
+		List<Map<String, Object>> resultList = sqlSessionTemplate.selectList(map.get("sqlMapId").toString(), map);
+		System.out.println(page.toString());
+*/
+		List<Map<String, Object>> resultList = sqlSessionTemplate.selectList(map.get("sqlMapId").toString(), map, new RowBounds(0, 3));
 		PageInfo pageInfo = new PageInfo<>(resultList, 3);
 		System.out.println(pageInfo.toString());
 		return resultList;

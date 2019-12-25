@@ -206,10 +206,9 @@
 		</dependency>
 		
 		<dependency>
-
-	    <groupId>com.github.pagehelper</groupId>
-		    <artifactId>pagehelper</artifactId>
-		    <version>5.1.2</version>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.1.2</version>
 		</dependency>
 		
 		<!-- spring整合spring-session实现缓存一致性 -->	<!-- spring 整合redis -->
