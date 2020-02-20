@@ -13,7 +13,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>标题</title>
-<base href="http://localhost/utils/" />
+<base href="http://localhost/" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link href="assets/js/bootstrap/3.3.4/css/bootstrap.min.css"
 	rel="stylesheet">
