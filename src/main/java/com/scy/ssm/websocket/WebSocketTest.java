@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * webSocket 测试
- *
+ * 需要导入tomcat的lib目录下的jar
  *
  */
 @ServerEndpoint("/websocket/{username}")
