@@ -8,6 +8,9 @@ import java.util.Vector;
  *
  */
 public class HttpRespons {
+	/**
+	 * 请求返回的内容，每个元素为一行数据
+	 */
 	public Vector<String> contentCollection;
 	public String urlString;
 	public int defaultPort;

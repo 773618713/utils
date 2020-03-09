@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.wifiedu.core.util.PropertiesUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ public class TestController {
 	
 	@Resource
 	OpenService openService;
-	
+
+
 	/**
 	 * 请求测试
 	 * @param request
@@ -96,13 +98,20 @@ public class TestController {
 	public String funRedisSession(HttpServletRequest request, HttpServletResponse response) {
 		String name = request.getParameter("name");
 		System.out.println("funRedisSession" + name);
-		request.getSession().setAttribute("name", "zhangsan");
+		request.getSession().setAttribute("name", name);
 		/*ModelAndView mv=new ModelAndView();
 		mv.setViewName("item");
 		return mv;*/
 		return "返回fun";
 	}
-	
+
+    @RequestMapping("/getfunRedisSession")
+    @ResponseBody
+    public String getfunRedisSession(HttpServletRequest request, HttpServletResponse response) {
+        String name = request.getSession().getAttribute("name").toString();
+        System.out.println("funRedisSession" + name);
+        return name;
+    }
 	
 
 	
