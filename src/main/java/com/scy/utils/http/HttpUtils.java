@@ -185,12 +185,12 @@ public class HttpUtils {
 			httpResponser.contentCollection = new Vector<String>();
 			StringBuffer temp = new StringBuffer();
 			String line = bufferedReader.readLine();
-			System.out.println("line="+line);
+			//System.out.println("line="+line);
 			while (line != null) {
 				httpResponser.contentCollection.add(line);
 				temp.append(line).append("\r\n");
 				line = bufferedReader.readLine();
-				System.out.println("line="+line);
+				//System.out.println("line="+line);
 			}
 			bufferedReader.close();
 			String ecod = urlConnection.getContentEncoding();
