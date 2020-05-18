@@ -13,6 +13,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class WriteExcel {
+    /**
+     * 样式数组
+     * 存储了单元格用到的各种样式（目前总共有16种不同排列组合的样式）
+     * CellStyle的创建数量是有限制的，所以要用styles数组来存储，实现相同的style复用。
+     */
+    private final static CellStyle[] styles = new CellStyle[1<<4];
 
     /**
      * 写出多张表
@@ -77,24 +83,48 @@ public class WriteExcel {
      * @param wkb
      */
     private static void setStyle(Cell cell, TableCell tableCell, SXSSFWorkbook wkb) {
-        CellStyle style = wkb.createCellStyle(); // 样式对象
+        //计算样式对应的key
+        byte key = 0;
         if (tableCell.align_center){
-            //style.setAlignment(XSSFCellStyle.ALIGN_CENTER);// 水平居中
-            style.setAlignment(HorizontalAlignment.CENTER);
+            key |= 1;
         }
         if (tableCell.vertical_center){
-            //style.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);//    垂直居中
-            style.setVerticalAlignment(VerticalAlignment.CENTER);
+            key |= 1<<1;
         }
         if (tableCell.decimalLen != null){
             if (tableCell.percentage == true){
                 //百分比
-                DataFormat dataFormat = wkb.createDataFormat();//创建格式化对象
-                style.setDataFormat(dataFormat.getFormat("#,##0.00%"));//设置数值类型格式为保留两位小数
+                key |= 1<<2;
             }else {
-                DataFormat dataFormat = wkb.createDataFormat();//创建格式化对象
-                style.setDataFormat(dataFormat.getFormat("#,##0.00"));//设置数值类型格式为保留两位小数
+                key |= 1<<3;
             }
+        }
+
+        //根据key获取样式
+        CellStyle style = styles[key];
+
+        //如果样式为null,则进行构建这种样式
+        if (style == null){
+            style = wkb.createCellStyle(); // 样式对象
+            if (tableCell.align_center){
+                //style.setAlignment(XSSFCellStyle.ALIGN_CENTER);// 水平居中
+                style.setAlignment(HorizontalAlignment.CENTER);
+            }
+            if (tableCell.vertical_center){
+                //style.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);//    垂直居中
+                style.setVerticalAlignment(VerticalAlignment.CENTER);
+            }
+            if (tableCell.decimalLen != null){
+                if (tableCell.percentage == true){
+                    //百分比
+                    DataFormat dataFormat = wkb.createDataFormat();//创建格式化对象
+                    style.setDataFormat(dataFormat.getFormat("#,##0.00%"));//设置数值类型格式为保留两位小数
+                }else {
+                    DataFormat dataFormat = wkb.createDataFormat();//创建格式化对象
+                    style.setDataFormat(dataFormat.getFormat("#,##0.00"));//设置数值类型格式为保留两位小数
+                }
+            }
+            styles[key] = style;
         }
         cell.setCellStyle(style);
     }
