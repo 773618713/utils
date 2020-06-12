@@ -14,11 +14,17 @@ import java.util.List;
 
 public class WriteExcel {
     /**
-     * 样式数组
-     * 存储了单元格用到的各种样式（目前总共有16种不同排列组合的样式）
-     * CellStyle的创建数量是有限制的，所以要用styles数组来存储，实现相同的style复用。
+     * 样式数组ThreadLocal
+     * 存储了单元格用到的各种样式
      */
-    private final static CellStyle[] styles = new CellStyle[1<<4];
+    private static ThreadLocal<CellStyle[]> cellStyleThreadLocal = new ThreadLocal();
+
+    /**
+     * 初始化单元格样式数组（目前总共有16种不同排列组合的样式）
+     */
+    private static void initCellStyles(){
+        cellStyleThreadLocal.set(new CellStyle[1<<4]);
+    }
 
     /**
      * 写出多张表
@@ -27,6 +33,8 @@ public class WriteExcel {
     public static void WriteExcel(List sheetList, OutputStream os) throws Exception{
         // 创建SXSSFWorkbook对象(excel的文档对象)
         SXSSFWorkbook wkb = new SXSSFWorkbook();
+        // 初始化单元格样式数组
+        initCellStyles();
         for (int i = 0; i < sheetList.size(); i++) {
             ExcelSheet sheet = (ExcelSheet) sheetList.get(i);
             WriteExcelSheet(sheet.rowList, sheet.sheetName, wkb);
@@ -41,7 +49,7 @@ public class WriteExcel {
      * @param sheetName
      * @param wkb
      */
-    public static void WriteExcelSheet(List rowList, String sheetName, SXSSFWorkbook wkb) {
+    private static void WriteExcelSheet(List rowList, String sheetName, SXSSFWorkbook wkb) {
         // 建立新的sheet对象（excel的表单）
         SXSSFSheet sheet = wkb.createSheet(sheetName);
 
@@ -100,6 +108,7 @@ public class WriteExcel {
             }
         }
 
+        CellStyle[] styles = cellStyleThreadLocal.get();
         //根据key获取样式
         CellStyle style = styles[key];
 

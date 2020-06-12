@@ -5,6 +5,7 @@ import gui.ava.html.parser.HtmlParser;
 import gui.ava.html.parser.HtmlParserImpl;
 import gui.ava.html.renderer.ImageRenderer;
 import gui.ava.html.renderer.ImageRendererImpl;
+import gui.ava.html.renderer.ImageRendererSubImpl;
 
 public class Html2Img {
     public static void main(String[] args) {
@@ -12,14 +13,16 @@ public class Html2Img {
         htmlParser.loadHtml(HtmlTemplateStr);
 
         // html 是我的html代码
-        ImageRenderer imageRenderer = new ImageRendererImpl(htmlParser);
-        imageRenderer.saveImage("E:\\lcxq1.png");
+        //ImageRenderer imageRenderer = new ImageRendererImpl(htmlParser);
+        //使用重写的ImageRendererSubImpl修复jpg图片变红问题
+        ImageRenderer imageRenderer = new ImageRendererSubImpl(htmlParser);
+        imageRenderer.saveImage("E:\\lcxq1.jpg");
 
         HtmlImageGenerator imageGenerator = new HtmlImageGenerator();
         //加载html模版
         imageGenerator.loadHtml(HtmlTemplateStr);
         //把html写入到图片
-        imageGenerator.saveAsImage("E:\\lcxq2.png");
+        imageGenerator.saveAsImage("E:\\lcxq2.jpg");
 
     }
 
