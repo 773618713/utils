@@ -1,5 +1,9 @@
 package com.scy.technique.thread;
 
+/**
+ * 多线程的使用方法
+ * 两个线程交替输出奇数偶数
+ */
 public class App {
 
     public synchronized void printEven() {
@@ -8,6 +12,7 @@ public class App {
                 if (i % 2 == 0) {
                     System.out.println(i);
                     notify();
+                    if (i != 10)
                     wait();
                 }
             }
@@ -35,6 +40,11 @@ public class App {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 app.printEven();
             }
         }).start();
