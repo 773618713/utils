@@ -1,4 +1,4 @@
-package com.scy.utils.poi.excel;
+package com.scy.utils.poi.excel.write;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
@@ -6,7 +6,6 @@ import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 
 import java.io.OutputStream;
 import java.math.BigDecimal;
@@ -140,6 +139,7 @@ public class WriteExcel {
 
     /**
      * 给单元格赋值
+     * 对值的类型进行判断，然后在放入单元格
      * @param cell
      * @param value
      */

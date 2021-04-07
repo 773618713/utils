@@ -1,4 +1,4 @@
-package com.scy.utils.poi.excel;
+package com.scy.utils.poi.excel.write;
 
 /**
  * 单元格
@@ -55,9 +55,9 @@ public class TableCell {
 
     /**
      *
-     * @param value
-     * @param decimalLen
-     * @param percentage
+     * @param value         值
+     * @param decimalLen    小数位数
+     * @param percentage    百分比
      */
     public TableCell(Object value,Integer decimalLen, boolean percentage){
         this.value = value;
