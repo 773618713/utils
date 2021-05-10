@@ -152,6 +152,8 @@ public class WriteExcel {
             cell.setCellValue(Double.parseDouble(value.toString()));
         } else if (value instanceof Integer) {
             cell.setCellValue(Integer.parseInt(value.toString()));
+        } else if (value instanceof Long) {
+            cell.setCellValue(Long.parseLong(value.toString()));
         }else if (value instanceof BigDecimal){
             BigDecimal b = (BigDecimal) value;
             Object num = null;
@@ -163,6 +165,8 @@ public class WriteExcel {
                 num = b.doubleValue();
             }
             setCellValue(cell, num);
+        }else {
+            cell.setCellValue(value.toString());
         }
     }
 
